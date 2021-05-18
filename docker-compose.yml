@@ -3,6 +3,7 @@ version: "3"
 services:
   postgres:
     image: postgres:latest
+    container_name: woice_postgres
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -13,6 +14,7 @@ services:
       - ./data/db:/var/lib/postgresql/data
   web:
     build: .
+    container_name: woice_web
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 5; done; echo "Web ready"; tail -f /dev/null'
     volumes:
       - ".:/code"
