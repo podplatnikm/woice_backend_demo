@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 5; done; echo "Web ready"; tail -f /dev/null'
+    volumes:
+      - ".:/code"
+    ports:
+      - "8016:8016"
+    depends_on:
+      - postgres
+    env_file: .env-docker
