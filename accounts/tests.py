@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.urls import reverse
 from rest_framework import status
 
@@ -11,7 +10,6 @@ class UserTestCase(BasicAPITestCase):
         self.USER_LIST = "user-list"
         self.USER_DETAIL = "user-detail"
         self.USER_ME = "user-me"
-        self.USER_CLASS_LABEL = settings.AUTH_USER_MODEL
         super(UserTestCase, self).setUp()
 
     def test_user_list(self):
