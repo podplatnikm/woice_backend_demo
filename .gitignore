@@ -98,3 +98,11 @@ data/
 
 # Environment file
 .env-docker
+
+# Media
+media/
+
+# Coverage
+htmlcov/
+.coverage
+
