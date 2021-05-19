@@ -13,6 +13,7 @@ channels = "*"
 drf-spectacular = "*"
 whitenoise = "*"
 pillow = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 coverage = "*"

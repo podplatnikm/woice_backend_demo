@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -194,6 +195,14 @@ LOGGING = {
 }
 
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 30,
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
@@ -210,4 +219,10 @@ SPECTACULAR_SETTINGS = {
         "url": "https://documenter.getpostman.com/view/5623349/TzRa5NwK",
         "description": "Postman collection of requests",
     },
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ISSUER": "Woice",
 }
