@@ -4,9 +4,9 @@ from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
-    email = models.EmailField(_("email address"), unique=True)
+    email = models.EmailField(verbose_name=_("email address"), unique=True)
     username = models.CharField(
-        _("username"),
+        verbose_name=_("username"),
         max_length=150,
         unique=True,
         help_text=_(
@@ -17,6 +17,9 @@ class User(AbstractUser):
             "unique": _("A user with that username already exists."),
         },
         blank=True,
+    )
+    avatar = models.ImageField(
+        _("avatar"), blank=True, null=True, help_text=_("Profile picture")
     )
 
     USERNAME_FIELD = "email"

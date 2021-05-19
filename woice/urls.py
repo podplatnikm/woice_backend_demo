@@ -23,6 +23,7 @@ urlpatterns = [path("admin/", admin.site.urls), path("", include("accounts.urls"
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns.append(path("api-auth/", include("rest_framework.urls")))
     urlpatterns.append(path("api/schema/", SpectacularAPIView.as_view(), name="schema"))
     urlpatterns.append(
         path(

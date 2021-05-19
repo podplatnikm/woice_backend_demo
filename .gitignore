@@ -98,3 +98,6 @@ data/
 
 # Environment file
 .env-docker
+
+# Media
+media/

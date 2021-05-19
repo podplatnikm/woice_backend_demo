@@ -12,6 +12,7 @@ django-filter = "*"
 channels = "*"
 drf-spectacular = "*"
 whitenoise = "*"
+pillow = "*"
 
 [dev-packages]
 coverage = "*"
