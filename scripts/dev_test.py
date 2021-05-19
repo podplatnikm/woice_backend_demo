@@ -3,10 +3,7 @@ from pathlib import Path
 
 root_dir = Path(__file__).resolve().parent.parent
 
-subprocess.run(
-    ["pytest"],
-    cwd=root_dir,
-)
+subprocess.run(["pytest"], cwd=root_dir)
 # subprocess.run(
 #     [
 #         "python",
@@ -23,6 +20,16 @@ subprocess.run(
 #         "manage.py",
 #         "test",
 #         "chat.tests.LobbyTestCase",
+#         "--settings=woice.settings.testing",
+#     ],
+#     cwd=root_dir,
+# )
+# subprocess.run(
+#     [
+#         "python",
+#         "manage.py",
+#         "test",
+#         "chat.tests.MessageTestCase",
 #         "--settings=woice.settings.testing",
 #     ],
 #     cwd=root_dir,
