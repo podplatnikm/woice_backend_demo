@@ -26,6 +26,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+APP_VERSION = "0.1.0"
+
 # Application definition
 INSTALLED_APPS = [
     # Base
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # API
     "accounts",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -185,5 +188,24 @@ LOGGING = {
             "propagate": False,
         },
         "django.db.backends": {"handlers": ["console"], "level": "INFO"},
+    },
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "COMPONENT_SPLIT_REQUEST": True,
+    "TITLE": "Woice Swagger Documentation",
+    "DESCRIPTION": "Swagger Documentation for RESTFul API made with Django Rest Framework for Woice",
+    "VERSION": APP_VERSION,
+    "CONTACT": {
+        "name": "Miha Podplatnik",
+        "email": DEVELOPER_MAIL,
+    },
+    "EXTERNAL_DOCS": {
+        "url": "https://documenter.getpostman.com/view/5623349/TzRa5NwK",
+        "description": "Postman collection of requests",
     },
 }

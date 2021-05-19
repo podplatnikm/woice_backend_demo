@@ -5,3 +5,4 @@ All notable changes to Porsche backend project will be documented in this file.
 ### Added
 - Verbose logging
 - Custom user model for future extensions
+- Swagger documentation
