@@ -101,3 +101,8 @@ data/
 
 # Media
 media/
+
+# Coverage
+htmlcov/
+.coverage
+
