@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # API
     "common",
     "accounts",
+    "chat",
     # Requirements
     "rest_framework",
     "drf_spectacular",

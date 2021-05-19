@@ -35,6 +35,7 @@ urlpatterns = [
         name="token_refresh",
     ),
     path("", include("accounts.urls")),
+    path("", include("chat.urls")),
 ]
 
 if settings.DEBUG:
