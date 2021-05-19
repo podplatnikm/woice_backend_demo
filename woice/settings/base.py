@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-APP_VERSION = "0.1.0"
+APP_VERSION = "0.1.1"
 
 # Application definition
 INSTALLED_APPS = [
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # API
     "common",
     "accounts",
+    "chat",
     # Requirements
     "rest_framework",
     "drf_spectacular",
