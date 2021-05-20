@@ -3,6 +3,11 @@ All notable changes to Porsche backend project will be documented in this file.
 
 ## Unreleased
 
+##[0.1.4]() - 2021-05-20
+### Added
+- Private lobbies that users can invite other users to
+- Messages in private lobbies are hidden from other users that are not a part of the private lobby
+- Users can not join private lobbies if they are not owner or invited (and can not post messages)
 
 ##[0.1.3]() - 2021-05-20
 ### Added

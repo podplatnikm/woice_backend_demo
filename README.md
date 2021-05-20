@@ -117,11 +117,11 @@ View [CHANGELOG.md](CHANGELOG.md) for more details
 ## Todo
 * ~~log in/out (basic JWT token auth is more than ok)~~ **DONE**
 * ~~create chat rooms~~ **DONE**
-* (optional) create private chat rooms with invites
+* ~~(optional) create private chat rooms with invites~~ **DONE**
 * (optional) add/revoke admin privileges for chat rooms
 * ~~find other users~~ **DONE**
-* ~~notify users that a user is typing~~
-* ~~send messages to users and chat rooms~~
+* ~~notify users that a user is typing~~ **DONE**
+* ~~send messages to users and chat rooms~~ **DONE**
 * ~~edit and delete sent messages~~ **DONE**
 * (optional) send email notications for missed chats
 
