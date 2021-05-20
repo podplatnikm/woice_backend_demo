@@ -32,4 +32,4 @@ class User(AbstractUser):
         try:
             return cls.objects.get(pk=pk)
         except cls.DoesNotExist:
-            AnonymousUser()
+            return AnonymousUser()

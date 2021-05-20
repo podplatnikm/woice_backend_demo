@@ -19,20 +19,24 @@ class JwtAuthMiddleware(BaseMiddleware):
         # Close old database connections to prevent usage of timed out connections
         close_old_connections()
 
-        token = parse_qs(scope["query_string"].decode("utf8"))["token"][0]
+        try:
+            token = parse_qs(scope["query_string"].decode("utf8"))["bearer"][0]
+        except KeyError:
+            # Token is not presented
+            return None
         try:
             # This will automatically validate the token and raise an error if token is invalid
             UntypedToken(token)
         except (InvalidToken, TokenError) as e:
             # Token is invalid
-            print(e)
             return None
         else:
             #  Then token is valid, decode it
             decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
-
             # Get the user using ID
-            scope["user"] = await get_user_model().get_by_pk_from_async(decoded_data["user_id"])
+            scope["user"] = await get_user_model().get_by_pk_from_async(
+                decoded_data["user_id"]
+            )
 
         # Return the inner application directly and let it run everything else
         return await super().__call__(scope, receive, send)
