@@ -1,3 +1,4 @@
+from channels.db import database_sync_to_async
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -32,3 +33,11 @@ class Lobby(TimestampModel):
         Returns the channels group name that sockets should subscribe to and get sent messages
         """
         return f"lobby_{self.pk}"
+
+    @classmethod
+    @database_sync_to_async
+    def get_by_pk_from_async(cls, pk):
+        try:
+            return cls.objects.get(pk=pk)
+        except cls.DoesNotExist:
+            return None

@@ -120,8 +120,8 @@ View [CHANGELOG.md](CHANGELOG.md) for more details
 * (optional) create private chat rooms with invites
 * (optional) add/revoke admin privileges for chat rooms
 * ~~find other users~~ **DONE**
-* notify users that a user is typing
-* send messages to users and chat rooms
+* ~~notify users that a user is typing~~
+* ~~send messages to users and chat rooms~~
 * ~~edit and delete sent messages~~ **DONE**
 * (optional) send email notications for missed chats
 

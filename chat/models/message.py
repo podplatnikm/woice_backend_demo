@@ -1,3 +1,4 @@
+from channels.db import database_sync_to_async
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -35,3 +36,8 @@ class Message(TimestampModel):
 
     def __str__(self):
         return f"[{self.pk}] {self.content}"
+
+    @classmethod
+    @database_sync_to_async
+    def create_from_async(cls, **kwargs):
+        return cls.objects.create(**kwargs)
