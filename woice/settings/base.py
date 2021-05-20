@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "chat",
     # Requirements
     "rest_framework",
+    "channels",
     "drf_spectacular",
 ]
 
@@ -77,6 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "woice.wsgi.application"
+ASGI_APPLICATION = "woice.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -228,3 +230,5 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ISSUER": "Woice",
 }
+
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
