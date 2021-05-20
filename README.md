@@ -42,6 +42,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#docs">Docs</a></li>
     <li><a href="#changelog">Changelog</a></li>
     <li><a href="#todo">Todo</a></li>
     <li><a href="#license">License</a></li>
@@ -107,6 +108,12 @@ I like to do this manually vs. specifying them in docker-compose, since by doing
 This project uses a [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow), so make sure you check it out. Always create a
 feature branch and go from there. Never do any development on master.
 After running the server, you can find API Docs under `{{url}}/api/schema/swagger-ui/` and on [Postman](https://documenter.getpostman.com/view/5623349/TzRa5NwK)
+
+<!-- DOCS -->
+## Docs
+Swagger docs (openapi) are available as a schema or schema UI when you start a development server under `{{url}}/api/schema/swagger-ui/`.  
+Postman docs about REST Api (could be incomplete) and WebSocket are available at: https://documenter.getpostman.com/view/5623349/TzRa5NwK#a272c013-a70e-4481-af83-c055451b3528
+
 
 
 <!-- CHANGELOG -->
