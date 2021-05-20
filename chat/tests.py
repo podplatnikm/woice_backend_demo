@@ -36,6 +36,26 @@ class LobbyTestCase(BasicAPITestCase):
         assert response.data.get("title") == lobby_1.title
         assert response.data.get("user") == self.user.pk
 
+    def test_lobby_retrieve_private(self):
+        """
+        User should be able to retrieve private lobbies he created or is a part of
+        """
+        user_2 = UserFactory()
+        lobby_1: Lobby = LobbyFactory(user=self.user, users=[user_2])
+        response = self.user_client.get(reverse(self.LOBBY_DETAIL, args=[lobby_1.pk]))
+        assert response.status_code == status.HTTP_200_OK
+        assert len(response.data.get("users")) == 1
+
+    def test_lobby_retrieve_private_not_member(self):
+        """
+        User should not be able to retrieve private lobbies he is not a part of
+        """
+        user_2 = UserFactory()
+        user_3 = UserFactory()
+        lobby_1: Lobby = LobbyFactory(user=user_2, users=[user_3])
+        response = self.user_client.get(reverse(self.LOBBY_DETAIL, args=[lobby_1.pk]))
+        assert response.status_code == status.HTTP_404_NOT_FOUND
+
     def test_lobby_create(self):
         """
         User should be able to create a lobby
@@ -48,6 +68,19 @@ class LobbyTestCase(BasicAPITestCase):
         assert response.status_code == status.HTTP_201_CREATED
         assert response.data.get("title") == title
         assert response.data.get("user") == self.user.pk
+
+    def test_lobby_create_private(self):
+        """
+        User should be able to create a private lobby
+        """
+        user_2 = UserFactory()
+        data = {"title": "Dana voda", "users": [user_2.pk]}
+
+        response = self.user_client.post(
+            reverse(self.LOBBY_LIST), data=data, format="json"
+        )
+        assert response.status_code == status.HTTP_201_CREATED
+        assert len(response.data.get("users")) == 1
 
     def test_lobby_delete(self):
         """
@@ -118,6 +151,18 @@ class MessageTestCase(BasicAPITestCase):
         )
         self.assert_response_length(response, 1)
         self.assert_ids_in_results(response.json().get("results"), [message_2.pk])
+
+    def test_message_list_private_messages(self):
+        """
+        User should not be able to list messages from private lobbies he is not a part of
+        """
+        user_2 = UserFactory()
+        user_3 = UserFactory()
+        lobby_1 = LobbyFactory(user=user_2, users=[user_3])
+        message_1 = MessageFactory(lobby=lobby_1)
+
+        response = self.user_client.get(reverse(self.MESSAGE_LIST))
+        self.assert_response_length(response, 0)
 
     def test_message_retrieve(self):
         """
