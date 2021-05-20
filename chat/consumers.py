@@ -22,7 +22,10 @@ class LobbyConsumer(AsyncJsonWebsocketConsumer):
             await self.close(code=4001)
         else:
             self.lobby = await Lobby.get_by_pk_from_async(self.room_name)
-            if self.lobby is None:
+            if (
+                self.lobby is None
+                or not await self.lobby.allow_access_for_user_from_async(self.user)
+            ):
                 await self.close(code=4000)
             else:
                 self.room_group_name = self.lobby.group_name
