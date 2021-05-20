@@ -1,4 +1,5 @@
-from django.contrib.auth.models import AbstractUser
+from channels.db import database_sync_to_async
+from django.contrib.auth.models import AbstractUser, AnonymousUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -24,3 +25,11 @@ class User(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
+
+    @classmethod
+    @database_sync_to_async
+    def get_by_pk_from_async(cls, pk):
+        try:
+            return cls.objects.get(pk=pk)
+        except cls.DoesNotExist:
+            AnonymousUser()

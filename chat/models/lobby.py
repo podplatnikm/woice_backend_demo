@@ -36,7 +36,7 @@ class Lobby(TimestampModel):
 
     @classmethod
     @database_sync_to_async
-    def get_lobby_by_pk(cls, pk):
+    def get_by_pk_from_async(cls, pk):
         try:
             return cls.objects.get(pk=pk)
         except cls.DoesNotExist:
