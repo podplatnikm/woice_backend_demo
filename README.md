@@ -43,6 +43,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#changelog">Changelog</a></li>
+    <li><a href="#todo">Todo</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -111,6 +112,18 @@ After running the server, you can find API Docs under `{{url}}/api/schema/swagge
 <!-- CHANGELOG -->
 ## Changelog
 View [CHANGELOG.md](CHANGELOG.md) for more details
+
+<!-- TODO -->
+## Todo
+* ~~log in/out (basic JWT token auth is more than ok)~~ **DONE**
+* ~~create chat rooms~~ **DONE**
+* (optional) create private chat rooms with invites
+* (optional) add/revoke admin privileges for chat rooms
+* ~~find other users~~ **DONE**
+* notify users that a user is typing
+* send messages to users and chat rooms
+* ~~edit and delete sent messages~~ **DONE**
+* (optional) send email notications for missed chats
 
 <!-- LICENSE -->
 ## License
